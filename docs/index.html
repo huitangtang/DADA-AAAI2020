@@ -460,18 +460,9 @@
                 </b>
             </p>
             <p style="text-align:justify; text-justify:inter-ideograph;">
-		As the training process proceeds, these ratios first increase and then stabilize at the level close to 1, 
-		indicating that an increasing number of unlabeled samples participate in training; 
-		on the 250-label setting, these ratios are consistently higher than those on the 40-label setting, 
-		manifesting that more experience, more confidence in making decisions; 
-		the gap between the paired ratios of all selected samples and highly confident ones, 
-		i.e., the ratio of selected moderately confident samples, 
-		is big in the earlier stage and decreases in the later stage 
-		since the instinct of self-training is to produce more and more samples of high confidence. 
-		<br>
-		<br>
-		In the following Fig. c, we observe that our GSF and PPF enjoy a lower mislabeled ratio, 
-		suggesting that <i>our methods can learn better decision boundaries closer to the ground-truth ones</i>.
+		The following figure shows qualitative improvements of these methods at aligning features across data domains, 
+		i.e., the distribution of target samples (red) changes from the scattered state of DANN to multiple category-wise clusters of DADA, 
+		which are aligned with source samples (blue) of corresponding categories.
             </p>
         </td>
     </tr>
