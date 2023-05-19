@@ -428,7 +428,6 @@
         </td>
     </tr>
 
-
     <tr>
         <td>
             <br>
@@ -509,29 +508,145 @@
 <table>
     <tr>
 	<td>
+	    <p style="text-align:center;">
 		The t-SNE visualization of feature alignment between the source (blue) and target (red) domains.
+	    </p>
 	</td>
     </tr>
+
+    <tr>
+        <td>
+            <br>
+            <p>
+                <b>
+                    R4: Comparison with SOTA
+                </b>
+            </p>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+		Our proposed DADA outperforms existing methods, testifying the efficacy of DADA in aligning the joint distributions of feature and category across domains. 
+		Our proposed DADA consistently achieves a good result on different adaptation settings, showing its excellent robustness. 
+            </p>
+	    <br>
+            <div style="text-align: center;">
+                <img src="resources/tab2.png" width="700px">
+            </div>
+	    <p style="text-align:center;">
+		Results for closed set domain adaptation on Office-31 based on ResNet-50.
+	    </p>
+	    <br>
+            <div style="text-align: center;">
+                <img src="resources/tab3.png" width="900px">
+            </div>
+	    <p style="text-align:center;">
+		Results for closed set domain adaptation on Syn2Real-C based on ResNet-101.
+	    </p>
+	    <br>
+            <div style="text-align: center;">
+                <img src="resources/tab7.png" width="700px">
+            </div>
+	    <p style="text-align:center;">
+		Results for closed set domain adaptation on Digits based on LeNet.
+	    </p>
+        </td>
+    </tr>
 </table>
 
 	
 <div style="text-align: center;">
-    <h3>Saliency Map Visualization</h3>
+    <h3>Partial Domain Adaptation</h3>
 </div>
 
 <table>
     <tr>
         <td>
+            <p>
+                <b>
+                    R1: Effects of the Number of Target Categories
+                </b>
+            </p>
             <p style="text-align:justify; text-justify:inter-ideograph;">
-		In the following figure, it is observed that our methods learn better feature representations that capture more complete semantic patterns, e.g., first example.
+		The following figure shows that our proposed DADA-P performs much better than DANN in all settings. 
+		It is noteworthy that the relative performance improvement becomes larger 
+		when the number of target categories decreases, 
+		testifying the superiority of our methods in reducing the influence of negative transfer. 
+		Thus, given a source domain, our methods can perform much better 
+		when applied to the target domain with unknown number of categories.
             </p>
 	    <br>
             <div style="text-align: center;">
-                <img src="resources/fig6.png" width="600px">
+                <img src="resources/vary_tarC_new.png" width="700px">
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <br>
+            <p>
+                <b>
+                    R2: Effects of the Number of Outlier Source Categories
+                </b>
+            </p>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+		The following figure shows that our proposed DADA-P significantly outperforms DANN in all settings. 
+		Particularly, the relative performance improvement is larger when the number of source categories is larger, 
+		demonstrating that our methods are more robust to the number of outlier source categories. 
+		Thus, for a given target task, our methods can have a much better performance when utilizing different source tasks.
+            </p>
+	    <br>
+            <div style="text-align: center;">
+                <img src="resources/vary_srcC_new.png" width="500px">
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <br>
+            <p>
+                <b>
+                    R3: Comparison with SOTA
+                </b>
+            </p>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+		Our proposed DADA-P substantially outperforms all comparative methods, 
+		showing the effectiveness of DADA-P on reducing the negative influence of source outliers 
+		while promoting the joint distribution alignment in the shared label space.
+            </p>
+	    <br>
+            <div style="text-align: center;">
+                <img src="resources/tab5.png" width="400px">
             </div>
 	    <p style="text-align:center;">
-		Visualizing the Grad-CAM saliency maps from the baseline FixMatch and our proposed GSF and PPF on 40- and 250-label settings. 
-		Note that the number on top of each picture means the ground-truth (first column) or predicted labels (other columns).
+		Results for partial domain adaptation on Syn2Real-C based on ResNet-50.
+	    </p>
+	    <br>
+            <div style="text-align: center;">
+                <img src="resources/tab8.png" width="700px">
+            </div>
+	    <p style="text-align:center;">
+		Results for partial domain adaptation on Office-31 based on ResNet-50.
+	    </p>
+	    <br>
+            <div style="text-align: center;">
+                <img src="resources/tab9.png" width="700px">
+            </div>
+	    <p style="text-align:center;">
+		Results for partial domain adaptation on Office-31 based on AlexNet.
+	    </p>
+	    <br>
+            <div style="text-align: center;">
+                <img src="resources/tab10.png" width="900px">
+            </div>
+	    <p style="text-align:center;">
+		Results for partial domain adaptation on Office-Home based on ResNet-50.
+	    </p>
+	    <br>
+            <div style="text-align: center;">
+                <img src="resources/tab11.png" width="400px">
+            </div>
+	    <p style="text-align:center;">
+		Results for partial domain adaptation on ImageNet-Caltech based on ResNet-50.
 	    </p>
         </td>
     </tr>
@@ -539,47 +654,70 @@
 	
 	
 <div style="text-align: center;">
-    <h3>Confidence Spectrum</h3>
+    <h3>Open Set Domain Adaptation</h3>
 </div>
 
 <table>
     <tr>
         <td>
+            <p>
+                <b>
+                    R1: Ablation Study
+                </b>
+            </p>
             <p style="text-align:justify; text-justify:inter-ideograph;">
-                In the following figure, we observe that the higher the confidence of a sample, the more inclined our method is to select it.
+		In the following table, we can observe that DANN improves over No Adaptation, its result is much worse than DANN-CA, 
+		verifying the efficacy of the design of the integrated classifier. 
+		DADA (w/o em + w/o td) improves over DANN-CA and 
+		DADA (w/o em) improves over DADA (w/o em + w/o td), 
+		showing the efficacy of our proposed discriminative adversarial learning. 
             </p>
 	    <br>
             <div style="text-align: center;">
-                <img src="resources/fig7.png" width="500px">
+                <img src="resources/tab1.png" width="700px">
             </div>
-	    <p style="text-align:center;">
-		Spectrum of confidence for samples selected by GSF and PPF. (128<sup>th</sup> epoch, CIFAR10@40).
-	    </p>
         </td>
     </tr>
-</table>
 
-
-<div style="text-align: center;">
-    <h3>Comparison with SOTA</h3>
-</div>
-
-<table>
     <tr>
         <td>
+            <br>
+            <p>
+                <b>
+                    R2: Quantitative Comparison
+                </b>
+            </p>
             <p style="text-align:justify; text-justify:inter-ideograph;">
-		 Experiments on SSL benchmarks show that our methods based on FixMatch achieve significant improvements in accuracy, verifying their efficacy in filtering samples of moderate confidence.
+		The following figure shows that our proposed DADA gives the predicted probability on the true category of any target instance a better chance to approach 1, 
+		meaning that target instances are more likely to be correctly classified by DADA, i.e., a better category-level domain alignment.
             </p>
 	    <br>
             <div style="text-align: center;">
-                <img src="resources/tab1.png" width="900px">
+                <img src="resources/average_probability.png" width="500px">
             </div>
 	    <p style="text-align:center;">
-		Error rates (%) for CIFAR-10, CIFAR-100, and SVHN.
+		Average probability on the true category over all target instances by task classifiers of different methods.
 	    </p>
         </td>
     </tr>
+
+    <tr>
+        <td>
+            <br>
+            <p>
+                <b>
+                    R3: Feature Visualization
+                </b>
+            </p>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+		The following figure shows qualitative improvements of these methods at aligning features across data domains, 
+		i.e., the distribution of target samples (red) changes from the scattered state of DANN to multiple category-wise clusters of DADA, 
+		which are aligned with source samples (blue) of corresponding categories.
+            </p>
+        </td>
+    </tr>
 </table>
+
 	
 <br>
 <hr>
