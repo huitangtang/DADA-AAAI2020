@@ -160,14 +160,14 @@
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
   }
 </style>
-	<title>Towards Discovering the Effectiveness of Moderately Confident Samples for Semi-Supervised Learning</title>
+	<title>Discriminative Adversarial Domain Adaptation</title>
 </head>
 
 <body>
 <br>
 <span style="font-size:36px">
     <div style="text-align: center;">
-        Towards Discovering the Effectiveness of Moderately Confident Samples for Semi-Supervised Learning
+        Discriminative Adversarial Domain Adaptation
     </div>
 </span>
 <br>
@@ -227,7 +227,7 @@
             <div style="text-align: center;">
                 <span style="font-size:20px">
                     Code
-                    <a href="https://github.com/huitangtang/GSF-PPF">[GitHub]</a>
+                    <a href="https://github.com/huitangtang/DADA">[GitHub]</a>
                 </span>
             </div>
         </td>
@@ -236,7 +236,7 @@
             <div style="text-align: center;">
                 <span style="font-size:20px">
                     Paper
-                    <a href="https://openaccess.thecvf.com/content/CVPR2022/papers/Tang_Towards_Discovering_the_Effectiveness_of_Moderately_Confident_Samples_for_Semi-Supervised_CVPR_2022_paper.pdf">[CVF]</a>
+                    <a href="https://ojs.aaai.org/index.php/AAAI/article/download/6054/5910">[CVF]</a>
                 </span>
             </div>
         </td>
@@ -263,18 +263,16 @@
     <tr>
         <td>
             <div style="text-align: center;">
-                <img src="resources/GSF&PPF.png" width="900px">
+                <img src="resources/DADA.png" width="900px">
             </div>
         </td>
     </tr>
     <tr>
         <td>
             <p style="text-align:justify; text-justify:inter-ideograph;">
-		We propose to utilize moderately confident samples for better model optimization. 
-		Based on the principle of local optimization landscape consistency, we propose Taylor expansion inspired filtration framework, 
-		relying on the Taylor expansion of the loss function to inspire the key measurement index of sample filtration, i.e., gradient and feature of finite orders. 
-		We derive two novel filters from this framework: <i>gradient synchronization filter (GSF)</i> selecting samples with similar optimization dynamics to the most reliable one, 
-		and <i>prototype proximity filter (PPF)</i> selecting samples near semantic prototypes.
+		We propose a novel adversarial learning method termed Discriminative Adversarial Domain Adaptation (DADA). 
+		Based on an integrated category and domain classifier, DADA has a novel adversarial objective that encourages a mutually inhibitory relation between category and domain predictions for any input instance. 
+		Except for the traditional closed set domain adaptation, we also extend DADA for extremely challenging problem settings of partial and open set domain adaptation.
             </p>
         </td>
     </tr>
@@ -291,22 +289,17 @@
     <tr>
         <td>
             <p style="text-align:justify; text-justify:inter-ideograph;">
-		Semi-supervised learning (SSL) has been studied for a long time to solve vision tasks in data-efficient application scenarios. 
-		SSL aims to learn a good classification model using a few labeled data together with large-scale unlabeled data. 
-		Recent advances achieve the goal by combining multiple SSL techniques, e.g., self-training and consistency regularization. 
-		From unlabeled samples, they usually adopt a confidence filter (CF) to select reliable ones with high prediction confidence. 
-		In this work, we study whether the moderately confident samples are useless and how to select the useful ones to improve model optimization. 
-		To answer these problems, we propose a novel Taylor expansion inspired filtration (TEIF) framework, 
-		which admits the samples of moderate confidence with similar feature or gradient to the respective one averaged over the labeled and highly confident unlabeled data. 
-		It can produce a stable and new information induced network update, leading to better generalization. 
-		Two novel filters are derived from this framework and can be naturally explained in two perspectives. 
-		One is gradient synchronization filter (GSF), which strengthens the optimization dynamic of fully-supervised learning; 
-		it selects the samples whose gradients are similar to class-wise majority gradients. 
-		The other is prototype proximity filter (PPF), which involves more prototypical samples in training to learn better semantic representations; 
-		it selects the samples near class-wise prototypes. 
-		They can be integrated into SSL methods with CF. 
-		We use the state-of-the-art FixMatch as the baseline. 
-		Experiments on popular SSL benchmarks show that we achieve the new state of the art.
+		Given labeled instances on a source domain and unlabeled ones on a target domain, 
+		unsupervised domain adaptation aims to learn a task classifier that can well classify target instances. 
+		Recent advances rely on domain-adversarial training of deep networks to learn domain-invariant features. 
+		However, due to an issue of mode collapse induced by the separate design of task and domain classifiers, 
+		these methods are limited in aligning the joint distributions of feature and category across domains. 
+		To overcome it, we propose a novel adversarial learning method termed Discriminative Adversarial Domain Adaptation (DADA). 
+		Based on an integrated category and domain classifier, DADA has a novel adversarial objective that 
+		encourages a mutually inhibitory relation between category and domain predictions for any input instance. 
+		We show that under practical conditions, it defines a minimax game that can promote the joint distribution alignment. 
+		Except for the traditional closed set domain adaptation, we also extend DADA for extremely challenging problem settings of partial and open set domain adaptation. 
+		Experiments show the efficacy of our proposed methods and we achieve the new state of the art for all the three settings on benchmark datasets.
             </p>
         </td>
     </tr>
