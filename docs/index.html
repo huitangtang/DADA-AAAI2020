@@ -396,6 +396,27 @@
     </tr>
 </table>
 
+<div style="text-align: center;">
+    <h3>Generalization Error Analysis</h3>
+</div>
+	
+<table>
+    <tr>
+        <td>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+		Our proposed DADA can formally better bound the expected target error than existing domain adaptation methods, 
+		which aim to measure and minimize the F-distance or the D-distance. 
+		The F<sub>H</sub>-distance can be upper bounded by the optimal solution of DADA.
+            </p>
+ 	    <br>
+	    <div style="text-align: center;">
+                <img src="resources/theorem1.png" width="500px">
+            </div>
+        </td>
+    </tr>
+</table>
+
+
 <br>
 <hr>
 <div style="text-align: center;">
@@ -519,7 +540,45 @@
             <br>
             <p>
                 <b>
-                    R4: Comparison with SOTA
+                    R4:  An In-Depth Analysis of Our Training Scheme
+                </b>
+            </p>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+		"Rate of Source Instances Failing to Satisfy Condition" declines to a very low value in an oscillatory manner, 
+		showing the efficacy of this training scheme in keeping the condition satisfied.
+		<br>
+		<br>
+		All valleys of "Test Error of Target Data" are derived from the adversarial training of DADA, 
+		showing the excellent efficacy of our proposed DADA in aligning the source and target domains. 
+		At epochs of adversarial training, the lower "Rate of Source Instances Failing to Satisfy Condition" is, 
+		the more improvement of performance is obtained, showing the necessity of satisfying the condition. 
+		<br>
+		<br>
+		The good performances of DADA on the two adaptation settings of MNIST→USPS and USPS→MNIST, which are very close to the perfect performance of 100%, 
+		confirm the efficacy of our proposed DADA in aligning the joint distributions of feature and category across the two domains. 
+            </p>
+	    <br>
+            <div style="text-align: center;">
+                <img src="resources/m2u_5lines_32alter.png" width="700px">
+            </div>
+	    <p style="text-align:center;">
+		(a) MNIST→USPS (N<sub>alter</sub> = 32)
+	    </p>
+            <div style="text-align: center;">
+                <img src="resources/u2m_5lines_32alter.png" width="700px">
+            </div>
+	    <p style="text-align:center;">
+		(b) USPS→MNIST (N<sub>alter</sub> = 32)
+	    </p>
+        </td>
+    </tr>
+	
+    <tr>
+        <td>
+            <br>
+            <p>
+                <b>
+                    R5: Comparison with SOTA
                 </b>
             </p>
             <p style="text-align:justify; text-justify:inter-ideograph;">
@@ -662,19 +721,19 @@
         <td>
             <p>
                 <b>
-                    R1: Ablation Study
+                    R1: Effects of the Small Probability
                 </b>
             </p>
             <p style="text-align:justify; text-justify:inter-ideograph;">
-		In the following table, we can observe that DANN improves over No Adaptation, its result is much worse than DANN-CA, 
-		verifying the efficacy of the design of the integrated classifier. 
-		DADA (w/o em + w/o td) improves over DANN-CA and 
-		DADA (w/o em) improves over DADA (w/o em + w/o td), 
-		showing the efficacy of our proposed discriminative adversarial learning. 
+		As the small probability q increases, accuracies of OS and OS* decrease and the accuracy of Unknown increases, 
+		which means that the target instances are more likely classified as the unknown category. 
+		When q = 0, the objective of the feature extractor is to align the whole source domain and the whole target domain, 
+		resulting in the misclassification of all unknown target instances as the known categories. 
+		To make a trade-off, we empirically set q = 0.1 for all open set adaptation settings.
             </p>
 	    <br>
             <div style="text-align: center;">
-                <img src="resources/tab1.png" width="700px">
+                <img src="resources/open_set_vary_t_new.png" width="500px">
             </div>
         </td>
     </tr>
@@ -684,36 +743,27 @@
             <br>
             <p>
                 <b>
-                    R2: Quantitative Comparison
+                    R2: Comparison with SOTA
                 </b>
             </p>
             <p style="text-align:justify; text-justify:inter-ideograph;">
-		The following figure shows that our proposed DADA gives the predicted probability on the true category of any target instance a better chance to approach 1, 
-		meaning that target instances are more likely to be correctly classified by DADA, i.e., a better category-level domain alignment.
+		Our proposed DADA-O outperforms all comparative methods in both evaluation metrics of Known and Mean, 
+		showing the efficacy of DADA-O in both aligning joint distributions of the known instances and identifying the unknown target instances.
             </p>
 	    <br>
             <div style="text-align: center;">
-                <img src="resources/average_probability.png" width="500px">
+                <img src="resources/tab4.png" width="900px">
             </div>
 	    <p style="text-align:center;">
-		Average probability on the true category over all target instances by task classifiers of different methods.
+		Results for open set domain adaptation on Syn2Real-O based on ResNet-152.
 	    </p>
-        </td>
-    </tr>
-
-    <tr>
-        <td>
-            <br>
-            <p>
-                <b>
-                    R3: Feature Visualization
-                </b>
-            </p>
-            <p style="text-align:justify; text-justify:inter-ideograph;">
-		The following figure shows qualitative improvements of these methods at aligning features across data domains, 
-		i.e., the distribution of target samples (red) changes from the scattered state of DANN to multiple category-wise clusters of DADA, 
-		which are aligned with source samples (blue) of corresponding categories.
-            </p>
+	    <br>
+            <div style="text-align: center;">
+                <img src="resources/tab12.png" width="900px">
+            </div>
+	    <p style="text-align:center;">
+		Results for open set domain adaptation on Office-31 based on AlexNet.
+	    </p>
         </td>
     </tr>
 </table>
